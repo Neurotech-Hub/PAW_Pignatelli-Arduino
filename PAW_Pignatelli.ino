@@ -99,14 +99,14 @@ void loop() {
   if (hallState)                        //when magnetic field is not detected
   {
     digitalWrite(LED_BUILTIN, LOW);  //do nothing, field is above threshold
-  } else                              //when magnetic field is detected, write to csv
+  } else                             //when magnetic field is detected, write to csv
   {
     wheelcount++;  //add rotation count
     Serial.println(wheelcount);
     while (!hallState)  //field falls below threshold, init write procedures
     {
       hallState = digitalRead(sensor);  //Read hall sensor
-      digitalWrite(LED_BUILTIN, HIGH);   //do nothing - prevents writing while stationary
+      digitalWrite(LED_BUILTIN, HIGH);  //do nothing - prevents writing while stationary
     }
     if (WRITE_DATA) {
       // CSV Writing
